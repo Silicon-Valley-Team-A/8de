@@ -1,0 +1,76 @@
+@import 'src/styles/color.scss';
+
+.content {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: $gray-2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom right, #607affea 10%, #ce1fffec 100%);
+  box-shadow: 0 2px 6px $black;
+  padding: 14px 0;
+
+  .player-container {
+    display: flex;
+
+    .song-info {
+      display: flex;
+      margin-right: 10px;
+      color: $white;
+
+      .info {
+        display: flex;
+        flex-direction: column;
+        .title {
+          font-weight: 400;
+          color: $white;
+        }
+        .artist {
+          color: $white;
+          font-weight: 300;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .controls {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+
+    .btn_action {
+      font-size: 2rem;
+      margin: 0 0.2rem;
+      cursor: pointer;
+      color: $white;
+
+      &:hover {
+        color: $primary-2;
+      }
+    }
+  }
+
+  .navigation {
+    width: 80%;
+
+    .navigation_wrapper {
+      width: 100%;
+      background-color: $white;
+      height: 5px;
+      border-radius: 30px;
+      cursor: pointer;
+
+      .progress_bar {
+        width: 0;
+        max-width: 100%;
+        height: 100%;
+        background-color: $primary-2;
+        border-radius: 30px;
+        transition: width 0.2s linear;
+      }
+    }
+  }
+}

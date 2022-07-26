@@ -1,0 +1,55 @@
+@import 'src/styles/color.scss';
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $primary-1;
+  width: 100vw;
+  height: 400px;
+
+  .pop-up-box {
+    position: absolute;
+    top: 70px;
+    right: 10px;
+  }
+
+  .save-modal-box {
+    position: absolute;
+    z-index: 5;
+  }
+
+  .image-box {
+    width: 100%;
+    min-width: 400px;
+    max-width: 850px;
+    transform: translateY(110px);
+    margin: 5%;
+    .genre-box {
+      display: flex;
+      width: fit-content;
+      color: $black;
+      background-color: #ffffff71;
+      padding: 7px;
+      margin: 5px 0;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 400;
+    }
+  }
+
+  .play-list-box {
+    transform: translateY(80px);
+    margin: 5%;
+    .more-option {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}
+
+.more-text {
+  display: flex;
+  justify-content: center;
+  margin: 200px 15% 0;
+}
