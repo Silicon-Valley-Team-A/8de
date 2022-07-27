@@ -115,13 +115,14 @@ def model(image_id):
     # Print the result
     #print("\nTop predictions:\n")
     n = 0
+    keyword = []
     for value, index in zip(values, indices):
-        if n==0:
-            keyword = text[index]
-            
+    
+        keyword.append(text[index])
+        
         n= n+1
         print(f"{text[index]:>16s}: {100 * value.item():.2f}%%")
 
-    print("keyword: "+keyword)
+    print(keyword)
     result['keyword'] = keyword
     return result
