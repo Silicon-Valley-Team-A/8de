@@ -125,32 +125,23 @@ def music(request):
 
         # Spotify 음악 검색
         ### 장르의 입력 여부에 따라 음악을 검색 ###
-        if(genre == ''):
-            results = sp.search(q=key['keyword'], limit=200)
-        else:
-            results = sp.search(q=key['keyword']+" genre: "+genre, limit=200)
-
-
-        ### 결과값 우선 필터링하여 1차 플레이리스트 추출 ###
-        data = search_songs(results) # 검색 결과를 우선 형식에 맞게 변환하여 data로 저장
-        res = music_classification(sp, data, res, key) # data에서 분위기에 맞는 음악만을 따로 추출해서 res에 저장
+        for i in range(0, 4):
+            if(genre == ''):
+                results = sp.search(q=key['keyword'][i], limit=50)
+            else:
+                results = sp.search(q=key['keyword'][i]+" genre: "+genre, limit=50)
+            data = search_songs(results) # 검색 결과를 우선 형식에 맞게 변환하여 data로 저장
+            res = music_classification(sp, data, res, key) # data에서 분위기에 맞는 음악만을 따로 추출해서 res에 저장
 
 
         ### 플레이리스트 길이가 너무 적으면 추가 플레이리스트 추출 ###
-        if(NEED_MORE):
-            results = sp.search(q=key['mood'], limit=50)
-            data = search_songs(results)
-            res = music_classification(sp, data, res, key)
-
-        if(NEED_MORE): 
-            results = sp.search(q="song", limit=50)
-            data = search_songs(results)
-            res = music_classification(sp, data, res, key)
-
-        if(NEED_MORE):
-            results = sp.search(q="music", limit=50)
-            data = search_songs(results)
-            res = music_classification(sp, data, res, key)
+        # if(NEED_MORE):
+        #     if(genre == ''):
+        #         results = sp.search(q=key['mood'], limit=50)
+        #     else:
+        #         results = sp.search(q=key['mood']+" genre: "+genre, limit=50)    
+        #     data = search_songs(results)
+        #     res = music_classification(sp, data, res, key)
 
 
         res['status'] = "success" # 성공/실패 여부
