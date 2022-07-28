@@ -4,7 +4,6 @@ from django.views.decorators.csrf import csrf_exempt
 import os
 import json
 import urllib
-from spotipy.util import CLIENT_CREDS_ENV_VARS
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 
@@ -127,9 +126,9 @@ def music(request):
         ### 장르의 입력 여부에 따라 음악을 검색 ###
         for i in range(0, 4):
             if(genre == ''):
-                results = sp.search(q=key['keyword'][i], limit=50)
+                results = sp.search(q=key['keyword'][i], limit=30)
             else:
-                results = sp.search(q=key['keyword'][i]+" genre: "+genre, limit=50)
+                results = sp.search(q=key['keyword'][i]+" genre: "+genre, limit=30)
             data = search_songs(results) # 검색 결과를 우선 형식에 맞게 변환하여 data로 저장
             res = music_classification(sp, data, res, key) # data에서 분위기에 맞는 음악만을 따로 추출해서 res에 저장
             if IS_FULL:
